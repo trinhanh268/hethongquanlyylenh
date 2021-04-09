@@ -12,9 +12,10 @@ Home
     <div class="col-sm-1">
         {% if user.username %}
                     <p>Xin chào {{user.username}}</p>
-                    <p><a href={ % url 'logout' %}>Đăng xuất</a></p>
+                    <p><a href="{% url 'logout' %}">Đăng xuất</a></p>
                 {% else %}
-                    <p><a href={ % url 'login' %}>Đăng nhập</a></p>
+                    <p><a href="{% url 'login' %}">Đăng nhập</a></p>
+                    <p><a href="/admin">admin</p>
                 {% endif %}
     </div>
 </div>
