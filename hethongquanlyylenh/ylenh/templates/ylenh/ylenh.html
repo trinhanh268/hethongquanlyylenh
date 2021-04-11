@@ -5,6 +5,8 @@ Y lenh
 {% endblock %}
 
 {% block content %}
-<h1>Xin Chào</h1>
-Đây là app home   
+{% for y in YLenhs %}
+    <h4>{{y.content}}</h4>
+
+{% endfor %}
 {% endblock %}
