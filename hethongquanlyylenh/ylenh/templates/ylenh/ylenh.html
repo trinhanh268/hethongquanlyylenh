@@ -5,6 +5,7 @@ Y lenh
 {% endblock %}
 
 {% block content %}
+    <p><a href="{% url 'create_ylenh' %}">Tao y lenh</a></p>
 {% for y in YLenhs %}
     <h4>{{y.content}}</h4>
 
