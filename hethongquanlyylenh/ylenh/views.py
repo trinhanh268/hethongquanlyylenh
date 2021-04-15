@@ -12,9 +12,9 @@ def create_ylenh(request):
     form = YLenhForm()
     if request.method == 'POST':
         form = YLenhForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
-        return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/ylenh')
     return render(request, 'ylenh/create_ylenh.html', {'form': form})
 
 
