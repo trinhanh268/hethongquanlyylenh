@@ -13,7 +13,9 @@ def create_ylenh(request):
     if request.method == 'POST':
         form = YLenhForm(request.POST)
         if form.is_valid():
-            form.save()
+            publish = form.save()
+            publish.username = request.user
+            publish.save()
             return HttpResponseRedirect('/ylenh')
     return render(request, 'ylenh/create_ylenh.html', {'form': form})
 

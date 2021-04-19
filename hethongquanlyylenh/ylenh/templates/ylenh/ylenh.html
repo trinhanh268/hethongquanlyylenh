@@ -7,7 +7,6 @@ Y lenh
 {% block content %}
     <p><a href="{% url 'create_ylenh' %}">Tao y lenh</a></p>
 {% for y in YLenhs %}
-    <h4>{{y.content}}</h4>
-
+    <p><a>{{y.username}}</a><a>{{y.content}}</a><a>{{y.day_start}}</a><a>{{y.day_end}}</a></p>
 {% endfor %}
 {% endblock %}
