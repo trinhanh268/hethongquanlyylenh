@@ -5,6 +5,6 @@ class YLenhForm(forms.ModelForm):
     class Meta:
         model = YLenh
         exclude = ['username']
-        fields = ['patient', 'content', 'day_end']
+        fields = ['title', 'patient', 'content', 'day_end']
         day_end = forms.DateField(
         widget=forms.widgets.DateInput(format="%m/%d/%Y"))

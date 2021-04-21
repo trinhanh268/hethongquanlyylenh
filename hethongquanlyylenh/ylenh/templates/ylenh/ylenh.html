@@ -6,7 +6,26 @@ Y lenh
 
 {% block content %}
     <p><a href="{% url 'create_ylenh' %}">Tao y lenh</a></p>
-{% for y in YLenhs %}
-    <p><a>{{y.username}}</a><a>{{y.content}}</a><a>{{y.day_start}}</a><a>{{y.day_end}}</a></p>
-{% endfor %}
+    <div class = "container">
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Username</th>
+            <th>Patient</th>
+            <th>Day Start</th>
+            <th>Day end</th>
+        </tr>
+
+        {% for y in YLenhs %}
+        <tr>
+            <th><a href="/ylenh/{{y.id}}">{{y.title}}</a></th>
+            <th>{{y.username}}</th>
+            <th>{{y.patient}}</th>
+            <th>{{y.day_start}}</th>
+            <th>{{y.day_end}}</th>
+            <td><a class="btn btn-danger btn-xs" href="{% url 'delete_ylenh' y.id  %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
 {% endblock %}

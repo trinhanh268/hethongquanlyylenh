@@ -1,0 +1,13 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+{{ylenh.title}}
+{% endblock %}
+
+{% block content %}
+    <h4>{{ylenh.title}}</h4>
+    <p>{{ylenh.content}}</p>
+    <p>{{ylenh.username}}</p>
+    <p>{{ylenh.day_start}}</p>
+    <p>{{ylenh.day_end}}</p>
+{% endblock %}
