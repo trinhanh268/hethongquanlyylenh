@@ -18,12 +18,13 @@ Y lenh
 
         {% for y in YLenhs %}
         <tr>
-            <th><a href="/ylenh/{{y.id}}">{{y.title}}</a></th>
+            <th>{{y.title}}</a></th>
             <th>{{y.username}}</th>
             <th>{{y.patient}}</th>
             <th>{{y.day_start}}</th>
             <th>{{y.day_end}}</th>
             <td><a class="btn btn-danger btn-xs" href="{% url 'delete_ylenh' y.id  %}">Delete</a></td>
+            <td><a class="btn btn-danger btn-xs" href="{% url 'modify_ylenh' y.id  %}">Modify</a></td>
         </tr>
         {% endfor %}
     </table>

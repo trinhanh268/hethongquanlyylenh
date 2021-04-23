@@ -17,24 +17,24 @@ def create_ylenh(request):
             publish.username = request.user
             publish.save()
             return HttpResponseRedirect('/ylenh')
-    return render(request, 'ylenh/create_ylenh.html', {'form': form})
-
-def ylenh_detail(request, id):
-    ylenh = YLenh.objects.get(id=id)
-    return render(request, "ylenh/ylenh_detail.html", {'ylenh': ylenh})
+    return render(request, 'ylenh/ylenh_form.html', {'form': form})
 
 def ylenh_delete(request, id):
     ylenh = YLenh.objects.get(id=id)
     ylenh.delete()
     return HttpResponseRedirect('/ylenh')
+    
+def ylenh_modify(request, id):
+    ylenh = YLenh.objects.get(id=id)
+    form = YLenhForm(instance=ylenh)
+    if request.method == 'POST':
+        form = YLenhForm(request.POST, instance = ylenh)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect ('/ylenh')
+    context = {'form': form}
+    return render(request, 'ylenh/ylenh_form.html', context=context)
 
-# def ylenh_modify(request, id):
-#     ylenh = YLenh.objects.get(id=id)
-#     yform = YLenhForm(instance=ylenh)
-#     if request.method == 'POST':
-#         yform = YLenhForm(request.POST, instance=ylenh)
-#         if yform.is_valid():
-#             yform.save()
-#             return redirect("ylenh_list")
-#     return render(request, 'ylenh/create_ylenh.html', {'form': yform}) 
+
+
     
