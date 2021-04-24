@@ -25,6 +25,7 @@ Y lenh
             <th>{{y.day_end}}</th>
             <td><a class="btn btn-danger btn-xs" href="{% url 'delete_ylenh' y.id  %}">Delete</a></td>
             <td><a class="btn btn-danger btn-xs" href="{% url 'modify_ylenh' y.id  %}">Modify</a></td>
+            <td><a class="btn btn-danger btn-xs" href="{% url 'ylenh_detail' y.id %}">Detail</a></td>
         </tr>
         {% endfor %}
     </table>

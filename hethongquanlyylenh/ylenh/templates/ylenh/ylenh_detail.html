@@ -1,0 +1,12 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+{{ylenh.title}}
+{% endblock %}
+
+{% block content %}
+    <p>Ten benh nhan: {{ylenh.patient}}</p>
+    <p>Tieu de: {{ylenh.title}}</p>
+    <p>Noi dung: {{ylenh.content}}</p>
+    <p>Ngay viet: {{ylenh.day_start}}</p>
+{% endblock %}
