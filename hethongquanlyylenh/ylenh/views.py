@@ -1,14 +1,48 @@
 from django.shortcuts import render, redirect
 from .models import YLenh
-from .form import YLenhForm
+from .form import YLenhForm, UpdateYLenhForm
 from django.http import HttpResponseRedirect , HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import datetime 
 
 # Create your views here.
 def list(request):
-    Data = {'YLenhs': YLenh.objects.filter(username=request.user).order_by('-day_start')}
-    return render(request, 'ylenh/ylenh.html', Data)    
+    search_field = request.GET.get('search_field')
+    in_search = request.GET.get('in_search')
+    status_field = request.GET.get('status')
+    YLenhs = YLenh.objects.filter(username=request.user).order_by('-day_start')
+    if status_field == 'Doing':
+        YLenhs = YLenhs.filter(status='Doing')
+    if status_field == 'Fail':
+        YLenhs = YLenhs.filter(status='Fail')
+    if status_field == 'Complete':
+        YLenhs = YLenhs.filter(status='Complete')
+    if search_field == 'Title':
+        YLenhs = YLenhs.filter(title__icontains=in_search)
+    if search_field == 'Patient':
+        YLenhs = YLenhs.filter(patient__icontains=in_search)
+    pag = Paginator(YLenhs, 8)
+    pag_num = request.GET.get('page')
+    try:
+        ylenh = pag.page(pag_num)
+    except PageNotAnInteger:
+        ylenh = pag.page(1)
+    except EmptyPage:
+        ylenh = pag.page(pag.num_pages)
+    for y in ylenh:
+        date = datetime.datetime.today()
+        if (date.year > y.day_end.year and y.status == 'Doing'):
+            y.status = 'Fail'
+            y.save()
+        if (date.year == y.day_end.year and date.month > y.day_end.month and y.status == 'Doing'):
+            y.status = 'Fail'
+            y.save()
+        if (date.year == y.day_end.year and date.month == y.day_end.month and date.day > y.day_end.day and y.status == 'Doing'):
+            y.status = 'Fail'
+            y.save()
+    return render(request, 'ylenh/ylenh.html', {'Data':ylenh})    
 
 def create_ylenh(request):
     form = YLenhForm()
@@ -28,14 +62,14 @@ def ylenh_delete(request, id):
     
 def ylenh_modify(request, id):
     ylenh = YLenh.objects.get(id=id)
-    form = YLenhForm(instance=ylenh)
+    form = UpdateYLenhForm(instance=ylenh)
     if request.method == 'POST':
-        form = YLenhForm(request.POST, instance = ylenh)
+        form = UpdateYLenhForm(request.POST, instance = ylenh)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect ('/ylenh')
     context = {'form': form}
-    return render(request, 'ylenh/ylenh_form.html', context=context)
+    return render(request, 'ylenh/ylenh_modify.html', context=context)
 
 def ylenh_view_pdf(request, id):
     ylenh = YLenh.objects.get(id=id)

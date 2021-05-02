@@ -5,6 +5,6 @@ from .models import YLenh
 class PostAdmin(admin.ModelAdmin):
     list_display = ['username','title', 'patient', 'content', 'day_start', 'day_end']
     list_filter = ['username', 'patient', 'day_start']
-    search_fields = ['username', 'patient']
+    search_fields = ['patient']
 
 admin.site.register(YLenh, PostAdmin)
