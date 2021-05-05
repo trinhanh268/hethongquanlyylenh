@@ -1,0 +1,39 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-column"  style="height: 80vh;">
+    <div class="shadow-sm p-5">
+        <h1 class="mb-4">Đăng ký</h1>
+        <form method="POST" class=".was-validated">
+            {% csrf_token %}
+            {% for key, value in form.errors.items %}
+            {{value}}
+            {% endfor %}
+            <div class="mb-4"> <h5>Tài khoản : </h5>
+                <div>
+                    {{form.username}}
+                </div>
+            </div>
+            <div class="mb-4"> <h5>Mật khẩu : </h5>
+                <div>
+                    {{form.password1}}
+                </div>
+            </div>
+            <div class="mb-4"> <h5>Nhập lại mật khẩu : </h5>
+                <div>
+                    {{form.password2}}
+                </div>
+            </div>
+            <input type="hidden" name="next" value="/"/>
+            <input class = "btn btn-primary" type="submit" value="Đăng ký"/>
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock %}

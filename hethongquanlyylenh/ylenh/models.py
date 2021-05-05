@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from patient.models import Patient
 
 # Create your models here.
 class YLenh(models.Model):
@@ -9,7 +10,7 @@ class YLenh(models.Model):
         ('Doing', 'Doing'),
     )
     username = models.ForeignKey(User, editable=False, on_delete = models.CASCADE, null=True)
-    patient = models.CharField(max_length=30)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
     title = models.CharField(default='Y Lenh', max_length=40)
     content = models.TextField()
     day_start = models.DateTimeField(auto_now_add=True)

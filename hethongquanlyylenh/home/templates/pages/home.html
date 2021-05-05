@@ -25,7 +25,12 @@ Home
                     Y lệnh
                 </a>
             </li>
-
+            <li>
+                <a href="/patient" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Bệnh nhân
+                </a>
+            </li>
         </ul>
         <hr>
     </div>
@@ -35,10 +40,12 @@ Home
 
                 {% if user.username %}
                 <p>Xin chào {{user.username}}</p>
-                <p><a class="mr-2" href="{% url 'logout' %}">(Đăng xuất)</a></p>
+                <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
+                <p><a class="mr-2" href="{% url 'change_password' %}">(Change password)</a></p>
                 {% else %}
                 <p><a href="{% url 'login' %}">Đăng nhập</a></p>
                 <p><a href="/admin">admin</a></p>
+                <p><a href="{% url 'register' %}">Đăng ký</a></p>
                 {% endif %}
 
     </nav>

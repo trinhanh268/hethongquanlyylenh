@@ -1,7 +1,7 @@
 {% extends "pages/base.html" %}
 
 {% block title %}
-Y lenh
+Benh Nhan
 {% endblock %}
 
 {% block content %}
@@ -21,13 +21,13 @@ Y lenh
                     </a>
                 </li>
                 <li>
-                    <a href="/ylenh" class="nav-link text-white active">
+                    <a href="/ylenh" class="nav-link ">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                         Y lệnh
                     </a>
                 </li>
                 <li>
-                    <a href="/patient" class="nav-link">
+                    <a href="/patient" class="nav-link text-white active">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                         Bệnh nhân
                     </a>
@@ -48,26 +48,18 @@ Y lenh
                 {% endif %}
             </nav>
             <div class="d-flex justify-content-end mr-3 mb-3">
-                <a href="{% url 'create_ylenh' %}" class="btn btn-primary ">Tạo y lệnh</a>
+                <a href="{% url 'patient_create' %}" class="btn btn-primary ">Tạo hồ sơ bệnh nhân</a>
             </div>
             <form method="GET">
                 {% csrf_token %}
                 <div class="form-row">
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-6">
                     <input class="form-control" type="search" name="in_search" placeholder="Search">
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-6">
                     <select class="form-control" name="search_field">
-                        <option>Title</option>
-                        <option>Patient</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <select class="form-control" name="status">
-                        <option>All</option>
-                        <option>Doing</option>
-                        <option>Fail</option>
-                        <option>Complete</option>
+                        <option>Name</option>
+                        <option>Doctor</option>
                     </select>
                   </div>
                 </div>
@@ -78,38 +70,35 @@ Y lenh
             <div class = "container">
                 <table class="table table-striped table-bordered table-hover" >
                     <tr>
-                        <th>Title</th>
-                        <th>Patient</th>
-                        <th>Day Start</th>
-                        <th>Day end</th>
-                        <th>Status</th>
+                        <th>Name</th>
+                        <th>PhoneNumber/Email</th>
+                        <th>Gender</th>
+                        <th>Sympton</th>
                     </tr>
-                    {% for y in Data %}
+                    {% for p in patient %}
                     <tr>
-                        <th>{{y.title}}</th>
-                        <th><a href="{% url 'patient_modify' y.id%}">{{y.patient}}</a></th>
-                        <th>{{y.day_start}}</th>
-                        <th>{{y.day_end}}</th>
-                        <th>{{y.status}}</th>
-                        <td><a class="btn btn-danger btn-xs" href="{% url 'delete_ylenh' y.id  %}">Xóa</a></td>
-                        <td><a class="btn btn-primary btn-xs" href="{% url 'modify_ylenh' y.id  %}">Sửa</a></td>
-                        <td><a class="btn btn-success btn-xs" href="{% url 'ylenh_detail' y.id %}">pdf</a></td>
+                        <th>{{p.patient_name}}</th>
+                        <th>{{p.phone_number}}</th>
+                        <th>{{p.gender}}</th>
+                        <th>{{p.sympton}}</th>
+                        <td><a class="btn btn-danger btn-xs" href="{% url 'patient_delete' p.id %}">Xóa</a></td>
+                        <td><a class="btn btn-primary btn-xs" href="{% url 'patient_modify' p.id %}">Sửa</a></td>
                     </tr>
                     {% endfor %}
                 </table>
             </div>
             <div class="pagination">
                 <span class="step-links">
-                    {% if Data.has_previous %}
-                        <a href="?page={{ Data.previous_page_number }}">Previous</a>
+                    {% if patient.has_previous %}
+                        <a href="?page={{ patient.previous_page_number }}">Previous</a>
                     {% endif %}
                 </span>
                 <span class="current">
-                    Page {{ Data.number }} of {{ Data.paginator.num_pages }}.
+                    Page {{ patient.number }} of {{ patient.paginator.num_pages }}.
                 </span>
                 <span>
                     {% if Data.has_next %}
-                        <a href="?page={{ Data.next_page_number }}">Next</a>
+                        <a href="?page={{ patient.next_page_number }}">Next</a>
                     {% endif %}
                 </span>
             </div>    
@@ -117,9 +106,5 @@ Y lenh
         
     </div>
 </div>
-
-
-
-
 
 {% endblock %}

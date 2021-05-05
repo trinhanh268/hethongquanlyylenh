@@ -1,5 +1,6 @@
 from django import forms
 from .models import YLenh
+from patient.models import Patient
 
 class YLenhForm(forms.ModelForm):
     class Meta:
@@ -8,6 +9,7 @@ class YLenhForm(forms.ModelForm):
         fields = ['title', 'patient', 'content', 'day_end']
         day_end = forms.DateField(
         widget=forms.widgets.DateInput(format="%m/%d/%Y"))
+        patient = forms.ModelChoiceField(queryset=Patient.objects.all())
 
 class UpdateYLenhForm(forms.ModelForm):
     class Meta:
