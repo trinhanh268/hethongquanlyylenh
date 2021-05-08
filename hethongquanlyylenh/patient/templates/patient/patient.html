@@ -98,7 +98,7 @@ Benh Nhan
                     Page {{ patient.number }} of {{ patient.paginator.num_pages }}.
                 </span>
                 <span>
-                    {% if Data.has_next %}
+                    {% if patient.has_next %}
                         <a href="?page={{ patient.next_page_number }}">Next</a>
                     {% endif %}
                 </span>
