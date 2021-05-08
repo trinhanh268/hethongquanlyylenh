@@ -47,4 +47,4 @@ def modify_patient(request, id):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/patient')
-    return render(request,'patient/patient_form.html', {'form': form})
+    return render(request,'patient/patient_modify.html', {'form': form})

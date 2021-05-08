@@ -22,7 +22,7 @@ def list(request):
     if search_field == 'Title':
         YLenhs = YLenhs.filter(title__icontains=in_search)
     if search_field == 'Patient':
-        YLenhs = YLenhs.filter(patient__icontains=in_search)
+        YLenhs = YLenhs.filter(patient__patient_name__icontains=in_search)
     pag = Paginator(YLenhs, 8)
     pag_num = request.GET.get('page')
     try:
