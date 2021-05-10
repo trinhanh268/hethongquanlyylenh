@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from patient.models import Patient
-
+from datetime import date
 # Create your models here.
 class YLenh(models.Model):
     STATUS = (
@@ -16,6 +16,6 @@ class YLenh(models.Model):
     day_start = models.DateTimeField(auto_now_add=True)
     day_end = models.DateField("Day End(mm/dd/yyyy)")
     status = models.CharField(max_length=12, default='Doing', choices=STATUS)
-    day_update = models.DateField(auto_now_add=True)
+    day_update = models.DateField(default=date.today())
     
     

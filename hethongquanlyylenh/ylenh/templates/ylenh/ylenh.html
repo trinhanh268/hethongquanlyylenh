@@ -93,6 +93,7 @@ Y lenh
                         <th>Day Start</th>
                         <th>Day end</th>
                         <th>Status</th>
+                        <th>Day_update</th>
                     </tr>
                     {% for y in Data %}
                     <tr>
@@ -101,6 +102,7 @@ Y lenh
                         <th>{{y.day_start}}</th>
                         <th>{{y.day_end}}</th>
                         <th>{{y.status}}</th>
+                        <th>{{y.day_update}}</th>
                         <td><a class="btn btn-danger btn-xs" href="{% url 'delete_ylenh' y.id  %}">Xóa</a></td>
                         <td><a class="btn btn-primary btn-xs" href="{% url 'modify_ylenh' y.id  %}">Sửa</a></td>
                         <td><a class="btn btn-success btn-xs" href="{% url 'ylenh_detail' y.id %}">pdf</a></td>

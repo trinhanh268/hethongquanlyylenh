@@ -63,10 +63,13 @@ def ylenh_delete(request, id):
 def ylenh_modify(request, id):
     ylenh = YLenh.objects.get(id=id)
     form = UpdateYLenhForm(instance=ylenh)
+    date = datetime.date.today()
     if request.method == 'POST':
         form = UpdateYLenhForm(request.POST, instance = ylenh)
         if form.is_valid():
-            form.save()
+            publish = form.save()
+            publish.day_update = date
+            publish.save()
             return HttpResponseRedirect ('/ylenh')
     context = {'form': form}
     return render(request, 'ylenh/ylenh_modify.html', context=context)
