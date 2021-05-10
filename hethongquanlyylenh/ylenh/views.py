@@ -89,4 +89,17 @@ def ylenh_view_pdf(request, id):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
-    
+def dashboard(request):
+    date = request.GET.get('date_search')
+    ylenh = YLenh.objects.filter(day_update=date)
+    doing = 0
+    complete = 0
+    fail = 0
+    for y in ylenh:
+        if y.status == 'Doing':
+            doing += 1
+        elif y.status == 'Complete':
+            complete += 1
+        elif y.status == 'Fail':
+            fail += 1
+    return render(request,'ylenh/ylenh_broadcast.html',{'d':doing, 'c':complete, 'f':fail})

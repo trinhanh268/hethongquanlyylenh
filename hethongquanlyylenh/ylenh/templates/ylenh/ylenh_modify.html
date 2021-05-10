@@ -53,6 +53,7 @@
             <h1> Sửa y lệnh</h1>
             <form method="POST">
             {% csrf_token %}
+            {% for key, value in form.errors.items %}
             <div class="d-flex justify-content-between mr-5 mb-3 mt-3" >
                 <div class="mb-4" style="width: 60%;"> <h5 class="mb-2  ">Tiêu đề: </h5>
                     <div>
