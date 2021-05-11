@@ -1,58 +1,124 @@
 {% extends "pages/base.html" %}
 
 {% block title %}
-Home
+Y lenh
 {% endblock %}
 
 {% block content %}
-<div class="wrapper d-flex">
-    <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 300px ; height:100vh;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <h3 class="fs-4">Quản lý y lệnh</h3>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Trang chủ
-                </a>
-            </li>
-            <li>
-                <a href="/ylenh" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Y lệnh
-                </a>
-            </li>
-            <li>
-                <a href="/patient" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Bệnh nhân
-                </a>
-            </li>
-        </ul>
-        <hr>
-    </div>
-
-    <nav style="width: 80% ; height : 40px;" class="mt-3 d-flex justify-content-end">
+<div>
+    <div class="wrapper d-flex">
+        <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 300px ; height:100vh;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <h3 class="fs-4">Quản lý y lệnh</h3>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link text-white active">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                        Trang chủ
+                    </a>
+                </li>
+                <li>
+                    <a href="/ylenh" class="nav-link ">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Y lệnh
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient" class="nav-link">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Bệnh nhân
+                    </a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+        <div style="width: 95%">
+            <nav style=" height : 40px;" class="mt-3 d-flex justify-content-end">
 
 
                 {% if user.username %}
                 <p>Xin chào {{user.username}}</p>
-                <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
-                <p><a class="mr-2" href="{% url 'change_password' %}">(Change password)</a></p>
+                <p><a class="mr-2" href="{% url 'logout' %}">(Đăng xuất)</a></p>
                 {% else %}
                 <p><a href="{% url 'login' %}">Đăng nhập</a></p>
                 <p><a href="/admin">admin</a></p>
-                <p><a href="{% url 'register' %}">Đăng ký</a></p>
                 {% endif %}
+            </nav>
+            <form method="GET" class="mt-4">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="form-row d-flex justify-content-end">
+                        <p class="mr-3 mt-2"><strong>Thống kê theo ngày : </strong></p>
+                        <div class="form-group d-flex">
+                            <input class="form-control" type="date" name="date_search" placeholder="Date">
+                            <div class="">  <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
 
-    </nav>
+                        </div>
+
+                    </div>
+                    <div class="row container mt-5">
+                        <div class="col-4" >
+                            <div class="card p-3" style="width: 18rem; background-color: #b6d4fe">
+
+                                <div class="card-body d-flex justify-content-between">
+                                    <h1 class="mr-4">13</h1>
+                                    <div class="">
+                                        <h5 class="card-title">Bệnh nhân mới tạo</h5>
+                                        <p> {{d}}Y lệnh mới</p>
+                                        <button class="btn btn-primary">Theo dõi</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4" >
+                            <div class="card p-3" style="width: 18rem; background-color:#77bd77">
+
+                                <div class="card-body d-flex justify-content-between">
+                                    <h1 class="mr-4">13</h1>
+                                    <div class="">
+                                        <h5 class="card-title">Bệnh nhân đã khám</h5>
+                                        <p> {{c}} Y lệnh đã  xử lý</p>
+                                        <button class="btn btn-primary">Theo dõi</button>
+                                    </div>
 
 
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-4" >
+                            <div class="card p-3" style="width: 18rem; background-color: #ffb0b0">
+
+                                <div class="card-body d-flex justify-content-between">
+                                    <h1 class="mr-4">13</h1>
+                                    <div class="">
+                                        <h5 class="card-title">Bệnh nhân chưa xử lý</h5>
+                                        <p> {{d}}Y lệnh chưa xử lý</p>
+                                        <button class="btn btn-primary">Theo dõi</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+
+
+
+
+
+        </div>
+
+    </div>
 </div>
-
 
 
 {% endblock %}
