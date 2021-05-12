@@ -5,8 +5,42 @@ Phiếu y lệnh
 {% endblock %}
 
 {% block content %}
-    <p>Ten benh nhan: {{ylenh.patient}}</p>
-    <p>Tieu de: {{ylenh.title}}</p>
-    <p>Noi dung: {{ylenh.content}}</p>
-    <p>Ngay viet: {{ylenh.day_start}}</p>
+    <div style="font-size: 16px">
+        <h1 style="text-align: center"> PHIEU Y LENH</h1>
+        <div>
+            <strong>Ten benh nhan : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>
+            <strong>Nam sinh : </strong>
+        </div>
+        <div> <strong>Đia chi: </strong></div>
+        <div> <strong>So dien thoai: </strong>
+        </div>
+        <br>
+        <br>
+        <table>
+            <tr style="border: 1px solid black;">
+                <th style="padding: 1">Ten benh nhan</th>
+                <th>Trieu chung</th>
+                <th>Ghi chu them</th>
+                <th>Ngay hen</th>
+            </tr>
+            <tr style="margin-top: 10px;border: 1px solid black;">
+                <td style="text-align: center; padding: 1"> ten benh nhan</td>
+                <td style="text-align: center">{{ylenh.title}}</td>
+                <td style="text-align: center">{{ylenh.content}}</td>
+                <td style="text-align: center">{{ylenh.day_start}}</td>
+            </tr>
+
+        </table><br><br>
+        <div>
+            <strong>
+                KHACH HANG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </strong>
+            <strong>
+               BAC SI
+            </strong>
+        </div>
+
+
+    </div>
+
 {% endblock %}
