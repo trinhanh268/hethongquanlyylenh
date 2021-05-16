@@ -8,32 +8,31 @@ Phiếu y lệnh
     <div style="font-size: 16px">
         <h1 style="text-align: center"> PHIEU Y LENH</h1>
         <div>
-            <strong>Ten benh nhan : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>
-            <strong>Nam sinh : </strong>
+            <strong>Ten benh nhan : {{ylenh.patient.patient_name}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>
+            <strong>Ngay sinh : {{ylenh.patient.birthday}}</strong>
         </div>
-        <div> <strong>Đia chi: </strong></div>
-        <div> <strong>So dien thoai: </strong>
+        <div> <strong>PhoneNumber/Email: {{ylenh.patient.phone_number}}</strong>
         </div>
         <br>
         <br>
         <table>
             <tr style="border: 1px solid black;">
                 <th style="padding: 1">Ten benh nhan</th>
-                <th>Trieu chung</th>
+                <th>Y lenh</th>
                 <th>Ghi chu them</th>
-                <th>Ngay hen</th>
+                <th>Ngay het han</th>
             </tr>
             <tr style="margin-top: 10px;border: 1px solid black;">
-                <td style="text-align: center; padding: 1"> ten benh nhan</td>
+                <td style="text-align: center; padding: 1"> {{ylenh.patient.patient_name}}</td>
                 <td style="text-align: center">{{ylenh.title}}</td>
                 <td style="text-align: center">{{ylenh.content}}</td>
-                <td style="text-align: center">{{ylenh.day_start}}</td>
+                <td style="text-align: center">{{ylenh.day_end}}</td>
             </tr>
 
         </table><br><br>
         <div>
             <strong>
-                KHACH HANG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; BENH NHAN &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             </strong>
             <strong>
                BAC SI

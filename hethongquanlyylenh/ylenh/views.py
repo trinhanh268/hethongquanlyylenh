@@ -98,11 +98,15 @@ def dashboard(request):
     doing = 0
     complete = 0
     fail = 0
+    create = 0
+    if date:
+        ylenhs = YLenh.objects.all()
+        for y in ylenhs:
+            if y.status == 'Doing':
+                doing += 1 
     for y in ylenh:
-        if y.status == 'Doing':
-            doing += 1
-        elif y.status == 'Complete':
+        if y.status == 'Complete':
             complete += 1
         elif y.status == 'Fail':
             fail += 1
-    return render(request,'ylenh/ylenh_broadcast.html',{'d':doing, 'c':complete, 'f':fail})
+    return render(request,'ylenh/ylenh_broadcast.html',{'d':doing, 'c':complete, 'f':fail, 'cr':create})
