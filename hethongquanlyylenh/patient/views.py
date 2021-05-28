@@ -12,7 +12,7 @@ def list(request):
     if search_field == 'Name':
         Patients = Patients.filter(patient_name__icontains=in_search)
     if search_field == 'Doctor':
-        Patients = Patients.filter(doctor__icontains=in_search)
+        Patients = Patients.filter(doctor__username__icontains=in_search)
     pag = Paginator(Patients, 8)
     pag_num = request.GET.get('page')
     try:

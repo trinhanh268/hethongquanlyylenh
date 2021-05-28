@@ -42,6 +42,7 @@ Y lenh
                 {% if user.username %}
                 <p>Xin chào {{user.username}}</p>
                 <p><a class="mr-2" href="{% url 'logout' %}">(Đăng xuất)</a></p>
+                <a href="{% url 'change_password' %}">Đổi mật khẩu</a>
                 {% else %}
                 <p><a href="{% url 'login' %}">Đăng nhập</a></p>
                 <p><a href="/admin">admin</a></p>

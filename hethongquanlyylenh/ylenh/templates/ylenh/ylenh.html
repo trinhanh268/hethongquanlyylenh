@@ -97,7 +97,7 @@ Y lenh
                     {% for y in Data %}
                     <tr>
                         <th>{{y.title}}</th>
-                        <th><a href="{% url 'patient_modify' y.id%}">{{y.patient}}</a></th>
+                        <th><a href="{% url 'patient_modify' y.patient.id%}">{{y.patient}}</a></th>
                         <th>{{y.day_start}}</th>
                         <th>{{y.day_end}}</th>
                         <th>{{y.status}}</th>
