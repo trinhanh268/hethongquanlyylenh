@@ -10,26 +10,26 @@ Y lenh
         <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 300px ; height:100vh;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                <h3 class="fs-4">Quản lý y lệnh</h3>
+                <h3 class="h4">Medical Instructions Management</h3>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a href="/" class="nav-link">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                        Trang chủ
+                        Home
                     </a>
                 </li>
                 <li>
                     <a href="/ylenh" class="nav-link text-white active">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                        Y lệnh
+                        Medical Instructions
                     </a>
                 </li>
                 <li>
                     <a href="/patient" class="nav-link">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                        Bệnh nhân
+                        Patient
                     </a>
                 </li>
             </ul>
@@ -40,11 +40,11 @@ Y lenh
 
 
                 {% if user.username %}
-                <p>Xin chào {{user.username}}</p>
-                <p><a class="mr-2" href="{% url 'logout' %}">(Đăng xuất)</a></p>
+                <p>Welcome {{user.username}}</p>
+                <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
                 {% else %}
-                <p><a href="{% url 'login' %}">Đăng nhập</a></p>
-                <p><a href="/admin">admin</a></p>
+                <p><a href="{% url 'login' %}">Login</a></p>
+                <p><a href="/admin">Admin</a></p>
                 {% endif %}
             </nav>
             <form method="GET" class="mt-4">
@@ -57,7 +57,7 @@ Y lenh
                             <div class="">  <button type="submit" class="btn btn-primary">Search</button>
                             </div>
                         </div>
-                    </div>                
+                    </div>
             </form>
             <div class="row container mt-5">
                 <div class="col-4" >

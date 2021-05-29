@@ -13,26 +13,26 @@
     <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 300px ; height:100vh;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <h3 class="fs-4">Quản lý y lệnh</h3>
+            <h3class="h4">Medical Instructions Management</h4>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="#" class="nav-link ">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Trang chủ
+                    Home
                 </a>
             </li>
             <li>
                 <a href="/ylenh" class="nav-link">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Y lệnh
+                    Medical Instructions
                 </a>
             </li>
             <li>
                 <a href="/patient" class="nav-link text-white active">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Bệnh nhân
+                    Patient
                 </a>
             </li>
         </ul>
@@ -40,19 +40,19 @@
     </div>
     <div style="width: 80%">
         <div class="ml-4">
-            <h1> Tạo bệnh nhân</h1>
+            <h1> Create Patient</h1>
             <form method="POST">
             {% csrf_token %}
             {% for key, value in form.errors.items %}
                 {{value}}
             {% endfor %}
             <div class="d-flex justify-content-between mr-5 mb-3 mt-3" >
-                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2  ">Tên bệnh nhân: </h5>
+                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2  ">Patient name: </h5>
                     <div>
                         {{form.patient_name}}
                     </div>
                 </div>
-                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Ngày sinh(mm/dd/yy) : </h5>
+                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Date of birth(mm/dd/yy) : </h5>
                     <div>
                         {{form.birthday}}
                     </div>
@@ -60,31 +60,31 @@
 
             </div>
             <div class="d-flex justify-content-between mr-5">
-                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2">Giới tính : </h5>
+                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2">Sex : </h5>
                     <div>
                         {{form.gender}}
                     </div>
                 </div>
-                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Thông tin liên lạc: </h5>
+                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Phone number: </h5>
                     <div>
                         {{form.phone_number}}
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-between mr-5">
-                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2">Triệu chứng : </h5>
+                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2">Symptom : </h5>
                     <div>
                         {{form.sympton}}
                     </div>
                 </div>
-                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Bệnh lý : </h5>
+                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Pathology: </h5>
                     <div>
                         {{form.note}}
                     </div>
                 </div>
             </div>
             <input type="hidden" name="next" value="/"/>
-            <input type="submit" class="btn btn-primary" value="Tạo bệnh nhân"/>
+            <input type="submit" class="btn btn-primary" value="Create Patient"/>
         </div>
         </form>
 

@@ -6,10 +6,10 @@ Phiếu y lệnh
 
 {% block content %}
     <div style="font-size: 16px">
-        <h1 style="text-align: center"> PHIEU Y LENH</h1>
+        <h1 style="text-align: center"> Medical Instructions Ticket</h1>
         <div>
-            <strong>Ten benh nhan : {{ylenh.patient.patient_name}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>
-            <strong>Ngay sinh : {{ylenh.patient.birthday}}</strong>
+            <strong>Patient name : {{ylenh.patient.patient_name}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>
+            <strong>Date of birth : {{ylenh.patient.birthday}}</strong>
         </div>
         <div> <strong>PhoneNumber/Email: {{ylenh.patient.phone_number}}</strong>
         </div>
@@ -17,10 +17,10 @@ Phiếu y lệnh
         <br>
         <table>
             <tr style="border: 1px solid black;">
-                <th style="padding: 1">Ten benh nhan</th>
-                <th>Y lenh</th>
-                <th>Ghi chu them</th>
-                <th>Ngay het han</th>
+                <th style="padding: 1">Patient</th>
+                <th>Patient</th>
+                <th>Title</th>
+                <th>Expiration date</th>
             </tr>
             <tr style="margin-top: 10px;border: 1px solid black;">
                 <td style="text-align: center; padding: 1"> {{ylenh.patient.patient_name}}</td>
@@ -30,16 +30,13 @@ Phiếu y lệnh
             </tr>
 
         </table><br><br>
-        <div>
-            <strong>
-                &nbsp; BENH NHAN &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </strong>
-            <strong>
-               BAC SI
-            </strong>
+        <div style="text-align: right;margin-right: 2">
+            <div>
+                <div style="margin-right: 4">PATIENT</div>
+                <div>(Patient signature)</div>
+            </div>
+
         </div>
-
-
     </div>
 
 {% endblock %}

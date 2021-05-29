@@ -13,26 +13,26 @@
     <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 300px ; height:100vh;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <h3 class="fs-4">Quản lý y lệnh</h3>
+            <h3 class="h4">Medical Instructions Management</h3>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="/" class="nav-link ">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Trang chủ
+                    Home
                 </a>
             </li>
             <li>
                 <a href="/ylenh" class="nav-link text-white active">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Y lệnh
+                    Medical Instructions
                 </a>
             </li>
             <li>
                 <a href="/patient" class="nav-link">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Bệnh nhân
+                    Patient
                 </a>
             </li>
         </ul>
@@ -41,28 +41,28 @@
     <div style="width: 80%">
         <nav height : 40px; class="mt-3 d-flex justify-content-end">
             {% if user.username %}
-            <p>Xin chào {{user.username}}</p>
-            <p><a class="mr-2" href="{% url 'logout' %}">(Đăng xuất)</a></p>
+            <p>Welcome {{user.username}}</p>
+            <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
             {% else %}
-            <p><a href="{% url 'login' %}">Đăng nhập</a></p>
-            <p><a href="/admin">admin</a></p>
+            <p><a href="{% url 'login' %}">Login</a></p>
+            <p><a href="/admin">Admin</a></p>
             {% endif %}
 
         </nav>
         <div class="ml-4">
-            <h1> Tạo y lệnh</h1>
+            <h1> Create Record</h1>
             <form method="POST">
             {% csrf_token %}
             {% for key, value in form.errors.items %}
                 {{value}}
             {% endfor %}
             <div class="d-flex justify-content-between mr-5 mb-3 mt-3" >
-                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2  ">Tiêu đề: </h5>
+                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2  ">Title: </h5>
                     <div>
                         {{form.title}}
                     </div>
                 </div>
-                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Bệnh nhân : </h5>
+                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Patient : </h5>
                     <div>
                         {{form.patient}}
                     </div>
@@ -70,19 +70,19 @@
 
             </div>
             <div class="d-flex justify-content-between mr-5">
-                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2">Nội dung : </h5>
+                <div class="mb-4" style="width: 60%;"> <h5 class="mb-2">Doctor Note : </h5>
                     <div>
                         {{form.content}}
                     </div>
                 </div>
-                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Ngày hết hạn (mm/dd/yyyy): </h5>
+                <div class="mb-4" style="width: 40%;"> <h5 class="mb-2">Expiration Date (mm/dd/yyyy): </h5>
                     <div>
                         {{form.day_end}}
                     </div>
                 </div>
             </div>
             <input type="hidden" name="next" value="/"/>
-            <input type="submit" class="btn btn-primary" value="Tạo y lệnh"/>
+            <input type="submit" class="btn btn-primary" value="Create record"/>
         </div>
         </form>
 
