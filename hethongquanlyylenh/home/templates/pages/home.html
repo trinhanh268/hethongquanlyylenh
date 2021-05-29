@@ -40,6 +40,7 @@ Y lenh
                 {% if user.username %}
                 <p>Welcome {{user.username}}</p>
                 <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
+
                 {% else %}
                 <p><a class="mr-2" href="{% url 'login' %}">Login</a></p>
                 <p><a href="/admin">Admin</a></p>
