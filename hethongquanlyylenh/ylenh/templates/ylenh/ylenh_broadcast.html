@@ -51,7 +51,7 @@ Y lenh
                 {% csrf_token %}
                 <div class="container">
                     <div class="form-row d-flex justify-content-end">
-                        <p class="mr-3 mt-2"><strong>Thống kê theo ngày : </strong></p>
+                        <p class="mr-3 mt-2"><strong>Search day: </strong></p>
                         <div class="form-group d-flex">
                             <input class="form-control" type="date" name="date_search" placeholder="Date">
                             <div class="">  <button type="submit" class="btn btn-primary">Search</button>
@@ -61,27 +61,26 @@ Y lenh
             </form>
             <div class="row container mt-5">
                 <div class="col-4" >
-                    <div class="card p-3" style="width: 18rem; background-color: #b6d4fe">
+                    <div class="card p-5" style="width: 18rem; background-color: #b6d4fe; border-radius: 10%">
 
                         <div class="card-body d-flex justify-content-between">
-                            <h4 class="mr-4">Y lệnh đang làm: {{d}}</h1>
+                            <h4 class="mr-4">Doing medical intructions {{d}}</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-4" >
-                    <div class="card p-3" style="width: 18rem; background-color:#77bd77">
-
+                    <div class="card p-5" style="width: 18rem; background-color:#77bd77; border-radius: 10%"">
                         <div class="card-body d-flex justify-content-between">
-                            <h4 class="mr-4">Y lệnh hoàn thành: {{c}}</h1>
+                            <h4 class="mr-4">Completed medical instructions: {{c}}</h1>
                         </div>
                     </div>
 
                 </div>
                 <div class="col-4" >
-                    <div class="card p-3" style="width: 18rem; background-color: #ffb0b0">
+                    <div class="card p-5" style="width: 18rem; background-color: #ffb0b0; border-radius: 10%"">
 
                         <div class="card-body d-flex justify-content-between">
-                            <h4 class="mr-4">Y lệnh thất bại: {{f}}</h1>
+                            <h4 class="mr-4">New medical instructions: {{f}}</h1>
                         </div>
                     </div>
                 </div>
