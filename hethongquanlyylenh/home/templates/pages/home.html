@@ -44,12 +44,17 @@ Y lenh
                 {% if user.username %}
                 <p>Welcome {{user.username}}</p>
                 <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
-
+                               
                 {% else %}
                 <p><a class="mr-2" href="{% url 'login' %}">Login</a></p>
                 <p><a href="/admin">Admin</a></p>
                 {% endif %}
             </nav>
+            {% if user.username %}
+            <div class="d-flex justify-content-end mr-3 mb-3">
+                <a href="{% url 'change_password' %}" class="btn btn-primary ">Change Password</a>
+            </div>
+            {% endif %}
             <div class="ml-3 mt-3">
                 <h1 class="text-center m-3 mb-5" style="color: #6a1a21"> Medical Instructions System</h1>
                 <div class="d-flex justify-content-center">
