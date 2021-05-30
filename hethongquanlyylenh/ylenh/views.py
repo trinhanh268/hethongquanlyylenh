@@ -35,12 +35,15 @@ def list(request):
         date = datetime.datetime.today()
         if (date.year > y.day_end.year and y.status == 'Doing'):
             y.status = 'Fail'
+            y.day_update = date
             y.save()
         if (date.year == y.day_end.year and date.month > y.day_end.month and y.status == 'Doing'):
             y.status = 'Fail'
+            y.day_update = date
             y.save()
         if (date.year == y.day_end.year and date.month == y.day_end.month and date.day > y.day_end.day and y.status == 'Doing'):
             y.status = 'Fail'
+            y.day_update = date
             y.save()
     return render(request, 'ylenh/ylenh.html', {'Data':ylenh})    
 
