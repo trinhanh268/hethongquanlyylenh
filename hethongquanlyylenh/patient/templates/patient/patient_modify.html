@@ -41,7 +41,7 @@
     <div style="width: 80%">
         <nav height : 40px; class="mt-3 d-flex justify-content-end">
             {% if user.username %}
-            <p>Welcome{{user.username}}</p>
+            <p>Welcome {{user.username}}</p>
             <p><a class="mr-2" href="{% url 'logout' %}">(Logout)</a></p>
             {% else %}
             <p><a href="{% url 'login' %}">Login</a></p>
