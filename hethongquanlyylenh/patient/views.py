@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def list(request):
-    Patients = Patient.objects.all()
+    Patients = Patient.objects.all().order_by('-doctor_id')
     search_field = request.GET.get('search_field')
     in_search = request.GET.get('in_search')
     if search_field == 'Name':
@@ -24,10 +24,12 @@ def list(request):
     return render(request,'patient/patient.html', {'patient': patient})
 
 def create_patient(request):
+    birthday = request.GET.get('birthday')
     form = PatientForm()
     if request.method == 'POST':
         form = PatientForm(request.POST)
         if form.is_valid():
+            form.birthday = birthday
             publish = form.save()
             publish.doctor = request.user
             publish.save()

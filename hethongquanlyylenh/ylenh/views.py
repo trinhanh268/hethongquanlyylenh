@@ -48,10 +48,12 @@ def list(request):
     return render(request, 'ylenh/ylenh.html', {'Data':ylenh})    
 
 def create_ylenh(request):
+    day_end = request.GET.get('day_end')
     form = YLenhForm()
     if request.method == 'POST':
         form = YLenhForm(request.POST)
         if form.is_valid():
+            form.day_end = day_end
             publish = form.save()
             publish.username = request.user
             publish.save()
@@ -98,12 +100,13 @@ def ylenh_view_pdf(request, id):
 def dashboard(request):
     date = request.GET.get('date_search')
     ylenh = YLenh.objects.filter(day_update=date)
+    ylenh = ylenh.filter(username=request.user)
     doing = 0
     complete = 0
     fail = 0
     create = 0
     if date:
-        ylenhs = YLenh.objects.all()
+        ylenhs = YLenh.objects.filter(username=request.user)
         for y in ylenhs:
             if y.status == 'Doing':
                 doing += 1 
